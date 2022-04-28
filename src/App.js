@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom
 
 import Login from "./components/Login";
 import FriendsList from "./components/FriendsList";
-import AddFreind from "./components/Addfriend";
-
-
+import AddFriend from "./components/Addfriend";
+import Logout from "./components/Logout";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -15,9 +15,9 @@ function App() {
       <header>
         <h2>Friends Database</h2>
         <Link className="link" to="/login">Login</Link>
-        <Link className="link" to="friends">Friends</Link>
+        <Link className="link" to="/friends">Friends</Link>
         <Link  className="link" to="friends/add">Add Friends</Link>
-        <Link className="link"  to="logout">Logout</Link>
+        <Link className="link"  to="/logout">Logout</Link>
       </header>
       <Route  exact path="/">
         <Login/>
@@ -25,12 +25,14 @@ function App() {
       <Route exact path="/login">
         <Redirect to="/"/>
       </Route>
-      <Route exact path="/friends">
-        <FriendsList/>
-      </Route>
-      <Route exact path="/friends/add">
-        <AddFreind/>
-      </Route>
+
+      <PrivateRoute exact path="/friends" component={FriendsList}/>
+      
+      <PrivateRoute exact path="/friends/add" component={AddFriend}/>
+        
+      
+      <PrivateRoute exact path="/logout" component={Logout}/>
+       
     </div>
     </Router>
   );
