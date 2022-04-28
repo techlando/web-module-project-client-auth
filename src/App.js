@@ -16,7 +16,7 @@ function App() {
         <h2>Friends Database</h2>
         <Link className="link" to="/login">Login</Link>
         <Link className="link" to="/friends">Friends</Link>
-        <Link  className="link" to="friends/add">Add Friends</Link>
+        <Link  className="link" to="/friends/add">Add Friends</Link>
         <Link className="link"  to="/logout">Logout</Link>
       </header>
       <Route  exact path="/">
